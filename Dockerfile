@@ -3,7 +3,7 @@ FROM linuxserver/baseimage
 MAINTAINER Sparklyballs <sparklyballs@linuxserver.io>
 
 ENV APTLIST="build-essential git nodejs python sshpass wget"
-ENV HOME="/app"
+ENV HOME="/config"
 
 # install packages
 RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - && \
@@ -11,7 +11,7 @@ apt-get install $APTLIST -qy && \
 npm install -g bower && \
 npm install -g gulp && \
 git clone https://github.com/furier/websync.git /app/websync && \
-
+cp /app/websync/default.wsdata.json /defaults/default.wsdata.json
 # give user abc a home folder
 usermod -d /app abc && \
 
