@@ -17,7 +17,7 @@ cp /app/websync/default.wsdata.json /defaults/default.wsdata.json && \
 usermod -d /config abc && \
 
 # complete install of websync (use setuser, cannot be run as root)
-chown -R abc:abc /app && \
+chown -R abc:abc /config /app  && \
 cd /app/websync && \
 /sbin/setuser abc npm install && \
 /sbin/setuser abc bower install && \
