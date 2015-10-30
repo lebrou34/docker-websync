@@ -1,26 +1,26 @@
 ![http://linuxserver.io](http://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)
 
-The [LinuxServer.io](https://www.linuxserver.io/) team brings you another quality container release featuring auto-update on startup, easy user mapping and community support. Be sure to checkout our [forums](https://forum.linuxserver.io/index.php) or for real-time support our [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
+The [LinuxServer.io](https://www.linuxserver.io/) team brings you another quality container release featuring dependency update on startup, easy user mapping and community support. Be sure to checkout our [forums](https://forum.linuxserver.io/index.php) or for real-time support our [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
 
-# linuxserver/<container-name>
+# linuxserver/websync
 
-<Provide a short, concise description of the application. No more than two SHORT paragraphs. Link to sources where possible and include an image illustrating your point if necessary. Point users to the original applications website, as that's the best place to get support - not here.>
+Websync is a webui based rsync task manager, where tasks can be added, scheduled and maintained in a sane manner. With websync's great and intuitive user interface you can now easily set up and schedule backup tasks. [Websync](http://furier.github.io/websync)
 
 ## Usage
 
 ```
-docker create --name=<container-name> -v /etc/localtime:/etc/localtime:ro -v <path to data>:/config -e PGID=<gid> -e PUID=<uid>  -p 1234:1234 linuxserver/<container-name>
+docker create --name=websync -v /etc/localtime:/etc/localtime:ro -v <path to data>:/config -e PGID=<gid> -e PUID=<uid>  -p 3000:3000 linuxserver/websync
 ```
 
 **Parameters**
 
-* `-p 4242` - the port(s)
+* `-p 3000` - webui port.
 * `-v /etc/localtime` for timesync - *optional*
-* `-v /config` -
+* `-v /config` - Where websync should store its config files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
 
-It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it <container-name> /bin/bash`.
+It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it websync /bin/bash`.
 
 ### User / Group Identifiers
 
@@ -35,12 +35,13 @@ Part of what makes our containers work so well is by allowing you to specify you
 
 ## Updates
 
-* Upgrade to the latest version simply `docker restart <container-name>`.
-* To monitor the logs of the container in realtime `docker logs -f <container-name>`.
+* Update the dependencies, simply  `docker restart websync`.
+* To monitor the logs of the container in realtime `docker logs -f websync`.
 
 
 
 ## Versions
 
 + **dd.MM.yyyy:** This is the standard Version type now. 
+
 
