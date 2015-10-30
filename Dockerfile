@@ -14,7 +14,7 @@ git clone https://github.com/furier/websync.git /app/websync && \
 cp /app/websync/default.wsdata.json /defaults/default.wsdata.json && \
 
 # give user abc a home folder
-usermod -d /app abc && \
+usermod -d /config abc && \
 
 # complete install of websync (use setuser, cannot be run as root)
 chown -R abc:abc /app && \
