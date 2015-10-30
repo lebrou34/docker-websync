@@ -11,7 +11,6 @@ apt-get install $APTLIST -qy && \
 npm install -g bower && \
 npm install -g gulp && \
 git clone https://github.com/furier/websync.git /app/websync && \
-cp /app/websync/default.wsdata.json /defaults/default.wsdata.json && \
 
 # give user abc a home folder
 usermod -d /config abc && \
