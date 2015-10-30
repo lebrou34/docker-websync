@@ -10,7 +10,6 @@ apt-get install $APTLIST -qy && \
 npm install -g bower && \
 npm install -g gulp && \
 git clone https://github.com/furier/websync.git /app/websync && \
-cp /app/websync/default.wsdata.json /defaults/wsdata.json && \
 
 # give user abc a home folder
 usermod -d /app abc && \
@@ -31,7 +30,10 @@ apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 # adding custom files
 ADD services/ /etc/service/
 ADD init/ /etc/my_init.d/
-RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
+RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh && \
+
+# configure websync
+mv /app/websync/dist/wsdata.json /defaults/wsdata.json
 
 # volumes and ports
 VOLUME /config
